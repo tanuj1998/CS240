@@ -1,0 +1,77 @@
+Wed May 3 18:58:39 EDT 2017
++break main
+Breakpoint 1 at 0x4010b7: file mytest.c, line 179.
++run
+Starting program: /home/u87/tyadav/cs240/Final-Exam-Practice/problems/problem_1/mytest 
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe768) at mytest.c:179
+179	    if (argc < 2) {
++run test7
+Starting program: /home/u87/tyadav/cs240/Final-Exam-Practice/problems/problem_1/mytest test7
+
+Breakpoint 1, main (argc=2, argv=0x7fffffffe748) at mytest.c:179
+179	    if (argc < 2) {
++n
+184	    test = argv[1];
++n
+185	    printf("Running %s\n", test);
++n
+186	    if (strcmp(test, "test1")==0) {
++n
+189	    else if (strcmp(test, "test2")==0) {
++n
+192	    else if (strcmp(test, "test3")==0) {
++n
+195	    else if (strcmp(test, "test4")==0) {
++n
+198	    else if (strcmp(test, "test5")==0) {
++n
+201	    else if (strcmp(test, "test6")==0) {
++n
+204	    else if (strcmp(test, "test7")==0) {
++n
+205		test7();
++s
+test7 () at mytest.c:155
+155	    char * filename = "files/file1.txt";
++s
+156	    List * list = llist_read( filename );    
++s
+llist_read (filename=0x4015c5 "files/file1.txt") at problem_review.c:104
+warning: Source file is more recent than executable.
+104	{
++s
+106	    List * list = (List*)malloc(sizeof(List));
++s
+107	    FILE *fd = fopen(filename,"r");
++s
+108	    if(fd == NULL){
++s
+111	    list->head = NULL;
++s
+113	    while(fscanf(fd,"%d",&c) == 1){
++s
+114	    	llist_insert_last(list,c);
++s
+llist_insert_last (list=0x603010, value=8) at problem_review.c:121
+121			ListNode * n = (ListNode*)malloc(sizeof(ListNode));
++s
+122			ListNode * e = list->head;
++n
+123			if(list->head == NULL)
++n
+125					n->value = value;
++n
+126					list->head = n;
++n
+127					n->next = NULL;
++n
+129			while(e->next != NULL){
++n
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00000000004013ef in llist_insert_last (list=0x603010, value=8) at problem_review.c:129
+129			while(e->next != NULL){
++qquit
+Undefined command: "qquit".  Try "help".
++quit
