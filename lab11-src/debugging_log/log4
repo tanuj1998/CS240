@@ -1,0 +1,22 @@
+Fri Apr 28 05:48:46 EDT 2017
++break main
+Breakpoint 1 at 0x405437: file IRCClient.cc, line 849.
++run
+Starting program: /home/u87/tyadav/cs240/lab11-src/IRCClient 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe7b8) at IRCClient.cc:849
+849	        if (argc < 3) {
++s
+850	                print_usage();
++s
+print_usage () at IRCClient.cc:701
+701	    printf("Usage: test-talk-server host port\n");
++s
+702	    exit(1);
++s
+[Inferior 1 (process 15484) exited with code 01]
++s
+The program is not being run.
++quit

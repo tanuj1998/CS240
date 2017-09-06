@@ -1,0 +1,25 @@
+Fri Apr 28 05:49:26 EDT 2017
++break main
+Breakpoint 1 at 0x405437: file IRCClient.cc, line 849.
++run
+Starting program: /home/u87/tyadav/cs240/lab11-src/IRCClient 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe7b8) at IRCClient.cc:849
+849	        if (argc > 3) {
++s
+853	        host = argv[1];
++s
+854	        sport = argv[2];
++s
+856	        sscanf(sport, "%d", &port);
++s
+858	        new_room = "NULL";
++s
+860	        gtk_init (&argc, &argv);
++s
+[Inferior 1 (process 15978) exited with code 01]
++s
+The program is not being run.
++quit

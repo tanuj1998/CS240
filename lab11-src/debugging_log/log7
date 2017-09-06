@@ -1,0 +1,82 @@
+Fri Apr 28 07:21:34 EDT 2017
++b main
+Breakpoint 1 at 0x405437: file IRCClient.cc, line 847.
++run localhost 2030
+Starting program: /u/data/u87/tyadav/cs240/lab11-src/IRCClient localhost 2030
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Breakpoint 1, main (argc=3, argv=0x7fffffffe408) at IRCClient.cc:847
+847	        if (argc < 3) {
++n
+851	        host = argv[1];
++n
+852	        sport = argv[2];
++n
+854	        sscanf(sport, "%d", &port);
++n
+856	        new_room = "NULL";
++n
+858	        gtk_init (&argc, &argv);
++n
+860	        window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
++n
+861	        gtk_window_set_title (GTK_WINDOW (window), "Internet Relay Chat");
++n
+862	        g_signal_connect (window, "destroy", G_CALLBACK (gtk_main_quit), NULL);
++n
+863	        gtk_container_set_border_width (GTK_CONTAINER (window), 10);
++n
+864	        gtk_widget_set_size_request (GTK_WIDGET (window), 1000 , 600);
++n
+865	        table = gtk_table_new (10, 6, TRUE);
++n
+866	        gtk_container_add (GTK_CONTAINER (window), table);
++n
+867	        gtk_table_set_row_spacings(GTK_TABLE (table), 5);
++n
+868	        gtk_table_set_col_spacings(GTK_TABLE (table), 5);
++n
+869	        gtk_widget_show (table);
++n
+872	        listUser = gtk_list_store_new (1, G_TYPE_STRING);
++n
+873	        list_update();
++n
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff615abd0 in g_type_check_instance_cast ()
+   from /usr/lib64/libgobject-2.0.so.0
++n
+Single stepping until exit from function g_type_check_instance_cast,
+which has no line number information.
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++quit

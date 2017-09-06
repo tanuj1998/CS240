@@ -1,0 +1,23 @@
+Fri Apr 28 05:44:38 EDT 2017
++break main
+Breakpoint 1 at 0x405437: file IRCClient.cc, line 849.
++run
+Starting program: /home/u87/tyadav/cs240/lab11-src/IRCClient 
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Breakpoint 1, main (argc=1, argv=0x7fffffffe7b8) at IRCClient.cc:849
+849	        if (argc < 3) {
++n
+850	                print_usage();
++n
+[Inferior 1 (process 14329) exited with code 01]
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++n
+The program is not being run.
++quit

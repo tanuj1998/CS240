@@ -1,0 +1,201 @@
+Fri Apr 28 07:44:06 EDT 2017
++b main
+Breakpoint 1 at 0x405437: file IRCClient.cc, line 847.
++run localhost 2030
+Starting program: /u/data/u87/tyadav/cs240/lab11-src/IRCClient localhost 2030
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+
+Breakpoint 1, main (argc=3, argv=0x7fffffffe408) at IRCClient.cc:847
+847	        if (argc < 3) {
++n
+851	        host = argv[1];
++n
+852	        sport = argv[2];
++n
+854	        sscanf(sport, "%d", &port);
++n
+856	        new_room = "NULL";
++n
+858	        gtk_init (&argc, &argv);
++n
+860	        window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
++n
+861	        gtk_window_set_title (GTK_WINDOW (window), "Internet Relay Chat");
++n
+862	        g_signal_connect (window, "destroy", G_CALLBACK (gtk_main_quit), NULL);
++n
+863	        gtk_container_set_border_width (GTK_CONTAINER (window), 10);
++n
+864	        gtk_widget_set_size_request (GTK_WIDGET (window), 1000 , 600);
++n
+865	        table = gtk_table_new (10, 6, TRUE);
++n
+866	        gtk_container_add (GTK_CONTAINER (window), table);
++n
+867	        gtk_table_set_row_spacings(GTK_TABLE (table), 5);
++n
+868	        gtk_table_set_col_spacings(GTK_TABLE (table), 5);
++n
+869	        gtk_widget_show (table);
++n
+872	        listUser = gtk_list_store_new (1, G_TYPE_STRING);
++n
+873	        list_update();
++n
+874	        list_of_users = create_list ("Users In Room", listUser);
++n
+875	        gtk_table_attach_defaults (GTK_TABLE (table), list_of_users, 0, 3, 0, 3);
++n
+876	        gtk_widget_show (list_of_users);
++n
+879	        list_rooms = gtk_list_store_new (1, G_TYPE_STRING);
++n
+880	        room_update();
++n
+881	        list_of_rooms = create_list ("Rooms", list_rooms);
++n
+882	        gtk_table_attach_defaults (GTK_TABLE (table), list_of_rooms, 3, 6, 0, 3);
++n
+883	        gtk_widget_show (list_of_rooms);
++n
+888	        chat_msg = create_text ("Welcome to Internet Relay Chat!\n");
++n
+889	        gtk_table_attach_defaults (GTK_TABLE (table), chat_msg, 0, 6, 3, 7);
++n
+890	        gtk_widget_show (chat_msg);
++n
+893	        GtkWidget *create_room_button = gtk_button_new_with_label ("Create Room");
++n
+894	        gtk_table_attach_defaults(GTK_TABLE (table), create_room_button, 0, 2, 7, 8);
++n
+895	        gtk_widget_show (create_room_button);
++n
+896	        g_signal_connect(create_room_button, "clicked", G_CALLBACK(create_room), NULL);
++n
+899	        GtkWidget *enter_room_button = gtk_button_new_with_label ("Enter Room");
++n
+900	        gtk_table_attach_defaults(GTK_TABLE (table), enter_room_button, 2, 4, 7, 8);
++n
+901	        gtk_widget_show (enter_room_button);
++n
+902	        g_signal_connect(enter_room_button, "clicked", G_CALLBACK(enter_room), NULL);
++n
+905	        GtkWidget *leave_room_button = gtk_button_new_with_label ("Leave Room");
++n
+906	        gtk_table_attach_defaults(GTK_TABLE (table), leave_room_button, 4, 6, 7, 8);
++n
+907	        gtk_widget_show (leave_room_button);
++n
+908	        g_signal_connect(leave_room_button, "clicked", G_CALLBACK(leave_room), NULL);
++n
+910	        GtkWidget * entryMessage = gtk_entry_new();
++n
+911	        gtk_entry_set_text(GTK_ENTRY(entryMessage), "New Message");
++n
+912	        gtk_table_attach_defaults(GTK_TABLE (table), entryMessage, 0, 6, 8, 9);
++n
+913	        gtk_widget_show (entryMessage);
++n
+916	        GtkWidget *send_button = gtk_button_new_with_label ("Send");
++n
+917	        gtk_table_attach_defaults(GTK_TABLE (table), send_button, 0, 6, 9, 10);
++n
+918	        const char * messageContent = gtk_entry_get_text(GTK_ENTRY(entryMessage));
++n
+919	        g_signal_connect_swapped(send_button, "clicked", G_CALLBACK(send_message), entryMessage);
++n
+920	        g_signal_connect(send_button, "clicked", G_CALLBACK(call_msg), NULL);
++n
+921	        gtk_widget_show (send_button);
++n
+923	        GtkWidget *label = gtk_label_new(NULL);
++n
+924	        gtk_label_set_markup(GTK_LABEL(label), "<big>User Info</big>");
++n
+925	        gtk_table_attach_defaults(GTK_TABLE (table), label, 6, 8, 4, 5);
++n
+926	        gtk_widget_show (label);
++n
+928	        name_label = gtk_label_new(NULL);
++n
+929	        gtk_label_set_markup(GTK_LABEL(name_label), "<big>User Name</big>");
++n
+930	        gtk_table_attach_defaults(GTK_TABLE (table), name_label, 6, 8, 5, 6);
++n
+931	        gtk_widget_show (name_label);
++n
+933	        pass_label = gtk_label_new(NULL);
++n
+934	        gtk_label_set_markup(GTK_LABEL(pass_label), "<big>Password</big>");
++n
+935	        gtk_table_attach_defaults(GTK_TABLE (table), pass_label, 6, 8, 6, 7);
++n
+936	        gtk_widget_show (pass_label);
++n
+938	        GtkWidget * labelTime = gtk_label_new(NULL);
++n
+939	        gtk_label_set_markup(GTK_LABEL(labelTime), "<big>Current Time : </big>");
++n
+940	        gtk_table_attach_defaults(GTK_TABLE (table), labelTime, 6, 7, 7, 8);
++n
+941	        gtk_widget_show (labelTime);
++n
+943	        GtkWidget * darea = gtk_drawing_area_new();
++n
+944	        gtk_table_attach_defaults(GTK_TABLE (table), darea, 7, 8, 7, 8);
++n
+945	        g_signal_connect(darea, "expose-event", G_CALLBACK(expose), NULL);
++n
+946	        g_timeout_add(10, (GSourceFunc) time_handler, (gpointer) window);
++n
+947	        time_handler(window);
++n
+950	        GtkWidget *sign_up_button = gtk_button_new_with_label ("Sign Up / Log In");
++n
+951	        gtk_table_attach_defaults(GTK_TABLE (table), sign_up_button, 6, 8, 8, 9);
++n
+952	        gtk_widget_show (sign_up_button);
++n
+953	        g_signal_connect(sign_up_button, "clicked", G_CALLBACK(sign_up), NULL);
++n
+955	        label_name_room = gtk_label_new(NULL);
++n
+956	        gtk_label_set_markup(GTK_LABEL(label_name_room), "<big>Room Entered</big>");
++n
+957	        gtk_table_attach_defaults(GTK_TABLE (table), label_name_room, 6, 8, 8, 9);
++n
+958	        gtk_widget_show (label_name_room);
++n
+960	        GtkWidget *exit_button = gtk_button_new_with_label ("Exit IRC");
++n
+961	        gtk_table_attach_defaults(GTK_TABLE (table), exit_button, 6, 8, 9, 10);
++n
+962	        gtk_widget_show (exit_button);
++n
+963	        g_signal_connect(exit_button, "clicked", G_CALLBACK(gtk_main_quit), NULL);
++n
+966	        gtk_widget_show (darea);
++n
+967	        gtk_widget_show (table);
++n
+968	        gtk_widget_show (window);
++n
+970	        g_timeout_add(100, (GSourceFunc) get_update, (gpointer) window);
++n
+971	        get_update(window);
++n
+973	        gtk_main ();
++n
+975	        return 0;
++n
+978	}
++n
+0x00007ffff4b3f6d0 in __libc_start_main () from /lib64/libc.so.6
++n
+Single stepping until exit from function __libc_start_main,
+which has no line number information.
+[Inferior 1 (process 22043) exited normally]
++n
+The program is not being run.
++quit
