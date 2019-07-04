@@ -1,1 +1,1 @@
-# CS240 Course Repo
+# CS240 Course Repository
