@@ -119,10 +119,8 @@ int llist_get_ith(LinkedList * list, int ith, int * value) {
 // It returns 1 if success or 0 if there is no ith entry.
 //
 int llist_remove_ith(LinkedList * list, int ith) {
-	ListNode * a;
-	a = list->head;
-	ListNode * b;
-	b = a->next;
+	ListNode * a = list->head;
+	ListNode * b = a->next;
 	int x = 1;
 
 	while(b!=NULL){
