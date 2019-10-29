@@ -15,12 +15,6 @@
  * Return Type: int
  ****************************************************************************/
 int intMatches(int key, void * element) {
-    /*int a = key;
-    int b = *((int*)(element));
-    if(a == b){
-    return 1;
-    }
-    return 0;*/
     int *n = (int*)element;
     return(key == *n) ? 1:0;
 }
