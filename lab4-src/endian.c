@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 int
-isLittleEndian() {
+isLittleEndian(){
  int a = 0x05;
  char * p = (char *) &a;
- if (*p==0x05) {
+ if (*p==0x05){
    return 1;
  }
  return 0;
