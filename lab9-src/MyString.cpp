@@ -23,8 +23,7 @@ int MyString::slength(const char *s) const
 }
 
 char * mystrcpy(char * dest, const char * src){
-   char * a;
-   a = dest;
+   char * a = dest;
 
    while(*src != '\0'){
     *a = *src;
