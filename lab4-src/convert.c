@@ -41,6 +41,7 @@ int main(int argc, char **argv)
 		}
 
 	}
+	
 	b = strtol(word, NULL, baseFrom);
 	printf("Converted to base 10: %ld\n", b);
 	while (b != 0)
