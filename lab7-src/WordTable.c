@@ -94,7 +94,7 @@ static char * nextword(FILE * fd) {
                 if (isaletter(x))
                 {
                         word[a] = x;
-                        a = a + 1;
+                        a++;
                         charCount++;
 
                 }
