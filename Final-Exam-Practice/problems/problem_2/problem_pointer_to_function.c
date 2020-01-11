@@ -58,8 +58,8 @@ int findElement(int n, int elementSize, void * array, int key, void * result, Ma
     for(int i = 0; i < n; i++){
     void *arr = (void*)((char*)array + elementSize*i);
     if(matches(key,arr)){
-    memcpy(result,arr,elementSize);
-    return 1;
+        memcpy(result,arr,elementSize);
+        return 1;
     }
     }
     return 0;
