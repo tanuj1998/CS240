@@ -14,11 +14,11 @@ int main() {
        low = 1;
        high = 100;
     for(;;){
-    int mid = (low+high)/2;
+    	int mid = (low+high)/2;
 	printf("Is it higher than %d? (y/n)\n", mid);
-    ans = getchar();
-    getchar();
-    if(ans == 'y')
+    	ans = getchar();
+    	getchar();
+    	if(ans == 'y')
      {
     	low = mid+1;
         
